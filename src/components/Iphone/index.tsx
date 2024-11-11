@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './style.css';
 import { FiInstagram, FiYoutube } from 'react-icons/fi';
 import { FaTelegram, FaTelegramPlane } from 'react-icons/fa';
+import { IconFromURL } from '@/utils/IconFromURL';
 
 const PhoneComponent = ({ bgImageURL = 'kalta-minor-khiva.jpg', socialLinks, authorName }) => {
   const [theme, setTheme] = useState('deep-purple');
@@ -105,6 +106,7 @@ const PhoneComponent = ({ bgImageURL = 'kalta-minor-khiva.jpg', socialLinks, aut
               <img
                 alt="Ismoil Shokirov"
                 src="https://avatars.githubusercontent.com/u/33512473?v=4"
+                // src="https://media.licdn.com/dms/image/v2/D5603AQHJasw-uAgntg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1710613057112?e=1736985600&v=beta&t=GIdC9Rf6zV2RWgqm15Jx7V2Lhh5X-_dhLzygeWh0-wI"
                 className="rounded-full border-2 w-24 object-cover block mb-2 shadow-2xl"
               />
               <h4 className="mb-4 shadow-2xl font-bold text-lg">{authorName}</h4>
@@ -114,7 +116,7 @@ const PhoneComponent = ({ bgImageURL = 'kalta-minor-khiva.jpg', socialLinks, aut
                     className="mb-2 py-1.5 px-2 rounded bg-opacity-30 bg-black flex items-center shadow-2xl"
                     key={curLink.id || idx}
                   >
-                    {curLink.icon}
+                    <IconFromURL url={curLink.href} />
                     <a href={curLink.href} target="_blank" className="ml-1.5">
                       {curLink.name}
                     </a>
