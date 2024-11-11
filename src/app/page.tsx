@@ -1,100 +1,57 @@
-'use client'
-
-import Image from "next/image";
-import { useRouter } from 'next/navigation'
-import { FiInstagram, FiYoutube, FiLinkedin, FiX, FiEdit } from "react-icons/fi"
-import { FaTelegram, FaLink, FaTelegramPlane } from "react-icons/fa"
-
-const LINKS = [
-  // {
-  //   id: 1,
-  //   name: 'Instagram here',
-  //   icon: <FiInstagram />,
-  //   href: "https://shokirov.uz"
-  // },
-  {
-    id: 5,
-    name: 'My linkedin',
-    icon: <FiLinkedin />,
-    href: "https://www.linkedin.com/in/ismoil-shokirov/"
-  },
-  {
-    id: 3,
-    name: 'My telegram channel',
-    icon: <FaTelegramPlane />,
-    href: "https://t.me/qisqalog"
-  },
-  {
-    id: 2,
-    name: 'My youtube channel',
-    icon: <FiYoutube />,
-    href: "https://www.youtube.com/@ismoilshokirov"
-  },
-  // {
-  //   id: 4,
-  //   name: 'My twitter',
-  //   icon: <FiX />,
-  //   href: "https://shokirov.uz"
-  // },
-  {
-    id: 6,
-    name: 'Personal website',
-    icon: <FaLink />,
-    href: "https://shokirov.uz"
-  },
-]
-
-const btnStyle = "py-2 px-4 rounded bg-opacity-20 bg-black"
+'use client';
+import { useEffect } from 'react';
+import Link from 'next/link';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import PageIllustration from '@/components/PageEffects/PageIllustration';
+import HeroHomePage from '@/components/pages/homepage/HeroHomePage';
+import PhoneComponent from '@/components/Iphone';
+import PricingHomePage from '@/components/pages/homepage/PricingHomePage';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default function Home() {
-  const router = useRouter()
-
-
-  const renderLinks = () => {
-    return LINKS.map(link => (
-      <li key={link.id}>
-        <a href={link.href} className={`${btnStyle} mb-2 flex items-center mb-2" target="_blank`}>
-          {link.icon} <span className="ml-3">{link.name}</span>
-        </a>
-      </li>
-    ))
-  }
-
-  const handleEdit = () => {
-    router.push('/edit')
-  }
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      disable: 'phone',
+      duration: 600,
+      easing: 'ease-out-sine'
+    });
+  });
 
   return (
-    <div
-      className="flex min-h-screen flex-col bg-no-repeat bg-cover bg-center text-white"
-      // style={{ backgroundImage: 'url(/amir-temur-museum.jpg)' }}
-      // style={{ backgroundImage: 'url(/minor-tash.jpg)' }}
-      // style={{ backgroundImage: 'url(/uzb-hotel.jpg)' }}
-      // style={{ backgroundImage: 'url(/metro.jpg)' }}
-      // style={{ backgroundImage: 'url(/kalon-buhara.jpg)' }}
-      // style={{ backgroundImage: 'url(/kalta-minor-khiva.jpg)' }}
-      style={{ backgroundImage: 'url(/samarqand.jpg)' }}
-    >
-      <div className="flex items-center justify-center flex-col mt-16">
-        <img
-          className="rounded-full border-2 w-32 object-cover block mb-4"
-          src="https://avatars.githubusercontent.com/u/33512473?v=4" alt="Ism"
-        />
-        <h1 className="text-3xl mb-4">Ismoil Shokirov</h1>
+    <>
+      <Header />
+      <main className="relative flex grow flex-col">
+        <PageIllustration />
+        <HeroHomePage />
+
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 pb-12 md:pb-20">
+          <PhoneComponent />
+        </div>
+
+        <PricingHomePage />
+
         <ul>
-          {renderLinks()}
+          <li className="text-blue-600">
+            <Link href="/create-page">Create page</Link>
+          </li>
+          <li className="text-blue-600">
+            <Link href="/preview">Preview</Link>
+          </li>
+          <li className="text-blue-600">
+            <Link href="/edit">Edit</Link>
+          </li>
+          <li className="text-blue-600">
+            <Link href="/login">Login</Link>
+          </li>
+          <li className="text-blue-600">
+            <Link href="/login">Login</Link>
+          </li>
         </ul>
-      </div>
-
-      <footer className="absolute bottom-4 left-1/2 text-2xl -translate-x-1/2">
-        <a href="https://qisqa.uz" target="_blank" className="rounded underline py-1 px-4">
-          qisqa.uz
-        </a>
-      </footer>
-
-      <button onClick={handleEdit} className={`${btnStyle} flex absolute top-8 right-10 items-center justify-center`}>
-        <span className="mr-3">Edit</span> <FiEdit />
-      </button>
-    </div >
+      </main>
+      <Footer />
+    </>
   );
 }

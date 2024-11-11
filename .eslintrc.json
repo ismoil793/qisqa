@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals"
+    //    "plugin:@typescript-eslint/recommended",
+    //    "plugin:react/recommended"
+  ]
+  //  "rules": {
+  //    "react/prop-types": "off", // Disable prop-types (since you're using TypeScript)
+  //    "@typescript-eslint/explicit-module-boundary-types": "error", // Enforce explicit types for function props
+  //    "@typescript-eslint/no-unused-vars": "error", // Unused variables become errors
+  //    "react/jsx-boolean-value": ["error", "always"], // Ensure boolean values are passed explicitly
+  //    "react/jsx-no-undef": "error", // Prevent undefined components from being used
+  //    "react/jsx-no-literals": ["error", { "noStrings": true }], // Enforce no raw strings in JSX
+  //    "@typescript-eslint/no-missing-props": "error" // Catch missing required props as errors
+  //  }
 }

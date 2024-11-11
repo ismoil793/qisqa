@@ -7,7 +7,7 @@ export default function TestComponent() {
 
     return (
         <div className="text-black border bg-cyan-400">
-            <input value={val} onChange={e => setVal(e.target.value)} placeholder="place test" />
+            <input value={val} onChange={e => setVal(e.target.value)} placeholder="placeholder" />
         </div>
     )
 }
