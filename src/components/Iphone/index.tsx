@@ -109,7 +109,7 @@ const PhoneComponent = ({ bgImageURL = 'kalta-minor-khiva.jpg', socialLinks, aut
               />
               <h4 className="mb-4 shadow-2xl font-bold text-lg">{authorName}</h4>
               <ul>
-                {socialLinks.map((curLink, idx) => (
+                {socialLinks?.map((curLink, idx) => (
                   <li
                     className="mb-2 py-1.5 px-2 rounded bg-opacity-30 bg-black flex items-center shadow-2xl"
                     key={curLink.id || idx}

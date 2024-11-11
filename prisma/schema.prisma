@@ -6,9 +6,41 @@
 
 generator client {
   provider = "prisma-client-js"
+  engineType = "library"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("POSTGRES_URL")
+}
+
+model User {
+  id  Int @id @default(autoincrement())
+  name String
+  email String @unique
+  page Page[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Page {
+  id Int @id @default(autoincrement())
+  path String @unique
+  title String?
+  image String?
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+  links Link[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Link {
+  id Int @id @default(autoincrement())
+  title String
+  url String
+  pageId Int
+  user Page @relation(fields: [pageId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
