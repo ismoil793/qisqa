@@ -1,64 +1,28 @@
-import React, { useState } from 'react';
-import { FiInstagram, FiLinkedin, FiPlus, FiSave, FiTrash, FiX, FiYoutube } from 'react-icons/fi';
-import { FaLink, FaTelegramPlane } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
+import { FiPlus, FiSave, FiTrash } from 'react-icons/fi';
 import Iphone from '@/components/Iphone';
-
-const LINKS = [
-  {
-    id: 1,
-    name: 'Instagram here',
-    icon: <FiInstagram />,
-    href: 'https://shokirov.uz'
-  },
-  {
-    id: 5,
-    name: 'My linkedin',
-    icon: <FiLinkedin />,
-    href: 'https://www.linkedin.com/in/ismoil-shokirov/'
-  },
-  {
-    id: 3,
-    name: 'My telegram channel',
-    icon: <FaTelegramPlane />,
-    href: 'https://t.me/qisqalog'
-  },
-  {
-    id: 2,
-    name: 'My youtube channel',
-    icon: <FiYoutube />,
-    href: 'https://www.youtube.com/@ismoilshokirov'
-  },
-  {
-    id: 4,
-    name: 'My twitter',
-    icon: <FiX />,
-    href: 'https://shokirov.uz'
-  },
-  {
-    id: 6,
-    name: 'Personal website',
-    icon: <FaLink />,
-    href: 'https://shokirov.uz'
-  }
-];
 
 const btnStyle = 'py-2 px-4 rounded-md shadow-sm text-gray-900';
 const inputStyle =
   'py-2 px-4 rounded-md text-gray-900 border placeholder:text-gray-400 mb-2 outline-gray-400 shadow-sm text-sm';
 
-const PreviewForm = () => {
-  const [links, setLinks] = useState<any>(LINKS);
+const PreviewForm = ({ pageData, linksData }) => {
+  const [links, setLinks] = useState<any>(() => {
+    if (linksData?.length) return linksData;
+    return [{ title: '', url: '' }];
+  });
   const [avatarLink, setAvatarLink] = useState(
     'https://avatars.githubusercontent.com/u/33512473?v=4'
   );
-  const [authorName, setAuthorName] = useState('Ismoil Shokirov');
+  const [pageTitle, setPageTitle] = useState('');
   const [bg, setBg] = useState('kalon-buhara.jpg');
+  const [qisqaPath, setQisqaPath] = useState('');
 
   const handleAvatarLinkChange = (e: any) => {
     setAvatarLink(e.target.value);
   };
-  const handleAuthorNameChange = (e: any) => {
-    setAuthorName(e.target.value);
+  const handlePageTitleChange = (e: any) => {
+    setPageTitle(e.target.value);
   };
 
   const handleAddLink = () => {
@@ -84,24 +48,28 @@ const PreviewForm = () => {
     setBg(bgName);
   };
 
+  const handleQisqaPathChange = e => {
+    setQisqaPath(e.target.value);
+  };
+
   const handleSave = () => {};
 
   const renderLinks = () => {
-    return links.map((link: any) => (
-      <div key={link.id} className="flex">
+    return links?.map((link: any, idx: number) => (
+      <div key={link.id || idx} className="flex">
         <input
-          name="href"
+          name="url"
           onChange={e => handleLinkChange(e, link.id)}
-          value={link.href}
-          placeholder="https://instagram.com"
+          value={link.url}
+          placeholder="https://linkedin.com"
           className={`form-input mb-2 w-full`}
         />
 
         <input
-          name="name"
+          name="title"
           onChange={e => handleLinkChange(e, link.id)}
-          value={link.name}
-          placeholder="My instagram account"
+          value={link.title}
+          placeholder="My linkedin account"
           className={`form-input mb-2 w-full sm:ml-5 ml-2`}
         />
         <button
@@ -114,6 +82,21 @@ const PreviewForm = () => {
     ));
   };
 
+  useEffect(() => {
+    if (linksData?.length) {
+      setLinks(linksData);
+    }
+  }, [linksData]);
+
+  useEffect(() => {
+    if (pageData.path) {
+      setQisqaPath(pageData.path);
+    }
+    if (pageData.title) {
+      setPageTitle(pageData.title);
+    }
+  }, [pageData]);
+
   return (
     <div className="flex w-full h-full lg:flex-row flex-col">
       <div className="flex flex-col relative z-20 lg:w-1/2 w-full">
@@ -122,7 +105,9 @@ const PreviewForm = () => {
           <span className="flex select-none items-center text-gray-500 sm:text-sm">qisqa.uz/</span>
           <input
             type="text"
-            name="qisqa-page"
+            name="qisqa-path"
+            value={qisqaPath}
+            onChange={handleQisqaPathChange}
             className="outline-none block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-gray-500 focus:ring-0 sm:text-sm/6"
             placeholder="example"
           />
@@ -130,11 +115,11 @@ const PreviewForm = () => {
 
         <p>Title</p>
         <input
-          onChange={handleAuthorNameChange}
+          onChange={handlePageTitleChange}
           // className={`${inputStyle} sm:w-3/5 w-96`}
           className={`form-input sm:w-5/6 w-96 mb-3`}
-          value={authorName}
-          placeholder="your name"
+          value={pageTitle}
+          placeholder="Your name"
         />
         <p>Link to your logo</p>
         <input
@@ -167,7 +152,7 @@ const PreviewForm = () => {
 
       <div className="w-full lg:w-1/2 flex justify-end">
         <div className="phone-container flex items-start justify-center ml-auto">
-          <Iphone bgImageURL={bg} socialLinks={links} authorName={authorName} />
+          <Iphone bgImageURL={bg} socialLinks={links} pageTitle={pageTitle} />
         </div>
 
         <div className="flex mb-5 flex-wrap mt-10 flex-col justify-center ml-auto">

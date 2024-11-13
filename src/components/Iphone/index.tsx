@@ -4,7 +4,7 @@ import { FiInstagram, FiYoutube } from 'react-icons/fi';
 import { FaTelegram, FaTelegramPlane } from 'react-icons/fa';
 import { IconFromURL } from '@/utils/IconFromURL';
 
-const PhoneComponent = ({ bgImageURL = 'kalta-minor-khiva.jpg', socialLinks, authorName }) => {
+const PhoneComponent = ({ bgImageURL = 'kalta-minor-khiva.jpg', socialLinks, pageTitle }) => {
   const [theme, setTheme] = useState('deep-purple');
 
   return (
@@ -109,16 +109,16 @@ const PhoneComponent = ({ bgImageURL = 'kalta-minor-khiva.jpg', socialLinks, aut
                 // src="https://media.licdn.com/dms/image/v2/D5603AQHJasw-uAgntg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1710613057112?e=1736985600&v=beta&t=GIdC9Rf6zV2RWgqm15Jx7V2Lhh5X-_dhLzygeWh0-wI"
                 className="rounded-full border-2 w-24 object-cover block mb-2 shadow-2xl"
               />
-              <h4 className="mb-4 shadow-2xl font-bold text-lg">{authorName}</h4>
+              <h4 className="mb-4 shadow-2xl font-bold text-lg">{pageTitle}</h4>
               <ul>
                 {socialLinks?.map((curLink, idx) => (
                   <li
                     className="mb-2 py-1.5 px-2 rounded bg-opacity-30 bg-black flex items-center shadow-2xl"
                     key={curLink.id || idx}
                   >
-                    <IconFromURL url={curLink.href} />
-                    <a href={curLink.href} target="_blank" className="ml-1.5">
-                      {curLink.name}
+                    <IconFromURL url={curLink.url} />
+                    <a href={curLink.url} target="_blank" className="ml-1.5">
+                      {curLink.title}
                     </a>
                   </li>
                 ))}

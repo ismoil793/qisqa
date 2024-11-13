@@ -13,31 +13,25 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // const url = new URL(req.url);
-    // const searchParams = url.searchParams;
-    // const email = searchParams.get('email');
-
-    let userInfo = await prisma.user.findFirst({
+    let pageInfo = await prisma.user.findFirst({
       where: {
         email: session.user.email
+      },
+      include: {
+        page: {
+          include: {
+            links: true
+          }
+        }
       }
     });
 
-    if (!userInfo && session.user) {
-      userInfo = await prisma.user.create({
-        data: {
-          name: session.user.name,
-          email: session.user.email
-        }
-      });
-    }
-
-    if (!userInfo) {
+    if (!pageInfo) {
       // @ts-ignore
-      return NextResponse.json({ message: 'User not found' }, { status: 404 });
+      return NextResponse.json({ message: 'Page not found' }, { status: 404 });
     }
 
-    return NextResponse.json({ data: userInfo });
+    return NextResponse.json({ data: pageInfo });
   } catch (error) {
     // @ts-ignore
     return NextResponse.json(

@@ -1,12 +1,11 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { useSession, signIn, signOut } from 'next-auth/react';
+import axios from 'axios';
 
 const SignInOptions = () => {
   const { data: session, ...rest } = useSession();
-
-  console.log(session, rest);
 
   const renderAuthOptions = () => {
     if (session) {
@@ -40,6 +39,13 @@ const SignInOptions = () => {
       </>
     );
   };
+
+  useEffect(() => {
+    if (session) {
+      // to getOrCreate current user in DB
+      axios.get('/api/users');
+    }
+  }, [session]);
 
   return (
     <div className="py-12 md:py-20">

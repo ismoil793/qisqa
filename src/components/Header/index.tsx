@@ -41,7 +41,7 @@ export default function Header() {
                 href="/signin"
                 className="btn-sm bg-gradient-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] py-[5px] text-white shadow-[inset_0px_1px_0px_0px_theme(colors.white/.16)] hover:bg-[length:100%_150%]"
               >
-                Signin
+                {session ? 'Sign out' : 'Signin'}
               </Link>
             </li>
 
@@ -56,7 +56,7 @@ export default function Header() {
 
             {session && (
               <li>
-                <Link href="/" className="flex items-center justify-center">
+                <Link href="/profile" className="flex items-center justify-center">
                   <img
                     className="rounded-full border w-9 object-cover block shadow-2xl"
                     src={session.user?.image || ''}

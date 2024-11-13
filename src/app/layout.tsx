@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import NextAuthSessionProvider from '@/components/Providers/NextAuthSessionProvider';
 import './globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import { QueryClientProvider } from '@/components/Providers/QueryClientProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,13 +18,15 @@ export default function RootLayout({
 }>) {
   return (
     <NextAuthSessionProvider>
-      <html lang="uz">
-        <body
-          className={`${inter.className} bg-gray-950 font-inter text-base text-gray-200 antialiased`}
-        >
-          {children}
-        </body>
-      </html>
+      <QueryClientProvider>
+        <html lang="uz">
+          <body
+            className={`${inter.className} bg-gray-950 font-inter text-base text-gray-200 antialiased`}
+          >
+            {children}
+          </body>
+        </html>
+      </QueryClientProvider>
     </NextAuthSessionProvider>
   );
 }
