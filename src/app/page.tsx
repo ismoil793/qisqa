@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="relative flex grow flex-col">
+      <main className="relative flex grow flex-col overflow-x-hidden">
         <PageIllustration />
         <HeroHomePage />
 

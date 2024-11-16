@@ -6,8 +6,8 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <footer className="relative overflow-x-hidden">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Footer illustration */}
         <div
           className="pointer-events-none absolute bottom-0 left-1/2 -z-10 -translate-x-1/2"

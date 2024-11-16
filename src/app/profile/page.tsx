@@ -26,23 +26,17 @@ const ProfilePage = () => {
     }
   });
 
-  const pageData = profileData?.page?.length > 0 ? profileData.page[0] : {}
-  const linksData = profileData?.page?.length > 0 ? profileData.page[0].links : []
+  const pageData = profileData?.page?.length > 0 ? profileData.page[0] : {};
+  const linksData = profileData?.page?.length > 0 ? profileData.page[0].links : [];
 
   return (
     <>
       <Header />
-      <PageIllustration multiple />
-      <section
-        className="mx-auto max-w-6xl px-4 sm:px-6 py-10 md:py-20"
-        style={
-          {
-            // backgroundColor: '#fff',
-            // backgroundImage: 'linear-gradient(62deg, #fff 0%, #8EC5FC 100%)'
-          }
-        }
-      >
-        <PreviewForm pageData={pageData} linksData={linksData} />
+      <section className="relative overflow-hidden">
+        <PageIllustration />
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 md:py-20">
+          <PreviewForm pageData={pageData} linksData={linksData} />
+        </div>
       </section>
       <Footer />
     </>

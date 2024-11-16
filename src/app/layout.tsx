@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Toaster } from 'react-hot-toast';
 import { Inter } from 'next/font/google';
 import NextAuthSessionProvider from '@/components/Providers/NextAuthSessionProvider';
 import './globals.css';
@@ -18,15 +19,28 @@ export default function RootLayout({
 }>) {
   return (
     <NextAuthSessionProvider>
-      <QueryClientProvider>
-        <html lang="uz">
-          <body
-            className={`${inter.className} bg-gray-950 font-inter text-base text-gray-200 antialiased`}
-          >
+      <html lang="uz">
+        <body
+          className={`${inter.className} bg-gray-950 font-inter text-base text-gray-200 antialiased`}
+        >
+          <QueryClientProvider>
+            <Toaster
+              position="top-center"
+              containerClassName="toast-container"
+              toastOptions={{
+                duration: 2000,
+                success: {
+                  duration: 2000
+                },
+                error: {
+                  duration: 5000
+                }
+              }}
+            />
             {children}
-          </body>
-        </html>
-      </QueryClientProvider>
+          </QueryClientProvider>
+        </body>
+      </html>
     </NextAuthSessionProvider>
   );
 }

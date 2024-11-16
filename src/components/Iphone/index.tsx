@@ -113,12 +113,12 @@ const PhoneComponent = ({ bgImageURL = 'kalta-minor-khiva.jpg', socialLinks, pag
               <ul>
                 {socialLinks?.map((curLink, idx) => (
                   <li
-                    className="mb-2 py-1.5 px-2 rounded bg-opacity-30 bg-black flex items-center shadow-2xl"
+                    className="mb-2 rounded bg-opacity-30 bg-black shadow-2xl"
                     key={curLink.id || idx}
                   >
-                    <IconFromURL url={curLink.url} />
-                    <a href={curLink.url} target="_blank" className="ml-1.5">
-                      {curLink.title}
+                    <a href={curLink.url} target="_blank" className="py-1.5 px-2 flex items-center ">
+                      <IconFromURL url={curLink.url} />
+                      <span className="ml-1.5">{curLink.title}</span>
                     </a>
                   </li>
                 ))}

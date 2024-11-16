@@ -28,6 +28,7 @@ model Page {
   path String @unique
   title String?
   image String?
+  bgImageName String?
   userId Int
   user User @relation(fields: [userId], references: [id])
   links Link[]

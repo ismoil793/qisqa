@@ -3,19 +3,29 @@ import React, { useEffect } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const SignInOptions = () => {
   const { data: session, ...rest } = useSession();
+  const router = useRouter();
 
   const renderAuthOptions = () => {
     if (session) {
       return (
-        <button
-          onClick={() => signOut()}
-          className="btn w-full bg-gradient-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_theme(colors.white/.16)] hover:bg-[length:100%_150%]"
-        >
-          <span className="ml-2">Sign out</span>
-        </button>
+        <div>
+          <button
+            onClick={() => router.push('/profile')}
+            className="mb-5 btn w-full bg-gradient-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_theme(colors.white/.16)] hover:bg-[length:100%_150%]"
+          >
+            <span className="ml-2">Go to profile</span>
+          </button>
+          <button
+            onClick={() => signOut()}
+            className="btn relative w-full bg-gradient-to-b from-gray-800 to-gray-800/60 bg-[length:100%_100%] bg-[bottom] text-gray-300 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_right,theme(colors.gray.800),theme(colors.gray.700),theme(colors.gray.800))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-[length:100%_150%]"
+          >
+            <span className="ml-2">Sign out</span>
+          </button>
+        </div>
       );
     }
 
@@ -40,10 +50,17 @@ const SignInOptions = () => {
     );
   };
 
+  const getOrCreateUser = () => {
+    try {
+      axios.get('/api/users');
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   useEffect(() => {
     if (session) {
-      // to getOrCreate current user in DB
-      axios.get('/api/users');
+      getOrCreateUser();
     }
   }, [session]);
 
