@@ -25,11 +25,11 @@ const SHOW_CASE_LINKS = [
     title: '@ismoil793',
     url: 'https://github.com/ismoil793'
   },
-  {
-    id: 4,
-    title: 'Stackoverflow',
-    url: 'https://stackoverflow.com/users/12924484/ismoil-shokirov'
-  },
+  // {
+  //   id: 4,
+  //   title: 'Stackoverflow',
+  //   url: 'https://stackoverflow.com/users/12924484/ismoil-shokirov'
+  // },
   {
     id: 5,
     title: 'My website',
