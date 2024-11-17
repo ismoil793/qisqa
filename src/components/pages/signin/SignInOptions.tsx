@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import axios from 'axios';
@@ -8,11 +8,18 @@ import { useRouter } from 'next/navigation';
 const SignInOptions = () => {
   const { data: session, ...rest } = useSession();
   const router = useRouter();
+  const [profileData, setProfileData] = useState(null);
+  const pageData = profileData?.page?.length > 0 ? profileData.page[0] : {};
 
   const renderAuthOptions = () => {
     if (session) {
       return (
         <div>
+          {pageData.path?.length && (
+            <a className="btn w-full mb-5 " href={`https://qisqa.uz/${pageData.path}`} target="_blank">
+              Visit: {`https://qisqa.uz/${pageData.path}`}
+            </a>
+          )}
           <button
             onClick={() => router.push('/profile')}
             className="mb-5 btn w-full bg-gradient-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_theme(colors.white/.16)] hover:bg-[length:100%_150%]"
@@ -50,9 +57,10 @@ const SignInOptions = () => {
     );
   };
 
-  const getOrCreateUser = () => {
+  const getOrCreateUser = async () => {
     try {
-      axios.get('/api/users');
+      const response = await axios.get('/api/users');
+      setProfileData(response.data.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -67,7 +75,7 @@ const SignInOptions = () => {
   return (
     <div className="py-12 md:py-20">
       {/* Section header */}
-      <div className="pb-12 text-center">
+      <div className="pb-6 text-center">
         <h1 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text font-nacelle text-3xl font-semibold text-transparent md:text-4xl">
           Welcome back
         </h1>

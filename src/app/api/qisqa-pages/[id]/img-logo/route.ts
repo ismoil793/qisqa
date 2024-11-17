@@ -14,14 +14,7 @@ export const GET = async (req: NextRequest, { params }) => {
     let pageInfo = await prisma.page.findFirst({
       where: { path: id },
       select: {
-        id: true,
-        path: true,
-        title: true,
-        bgImageName: true,
-        userId: true,
-        createdAt: true,
-        updatedAt: true,
-        links: true
+        image: true
       }
     });
 

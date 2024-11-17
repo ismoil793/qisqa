@@ -28,7 +28,8 @@ const ProfilePage = () => {
     queryFn: async () => {
       const res = await axios.get('/api/profile');
       return res.data.data;
-    }
+    },
+    refetchOnWindowFocus: false
   });
 
   const isLoadingProfile = isLoading || isFetching;

@@ -1,14 +1,14 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 
-const MAX_FILE_SIZE = 2 * 1024 * 1024;
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
 const PreviewImage = ({ logoFile, setLogoFile, isFormSaving }) => {
   const handleFileChange = e => {
     const file = e.target.files[0];
 
     if (file.size > MAX_FILE_SIZE) {
-      toast.error('File size cannot exceed 2MB');
+      toast.error('File size cannot exceed 5MB');
       return;
     }
 

@@ -3,19 +3,18 @@ import { IconFromURL } from '@/utils/IconFromURL';
 import React from 'react';
 import QisqaPageEdit from '@/components/pages/qisqa/QisqaPageEdit';
 import Head from 'next/head';
+import QisqaPageLogo from '@/components/pages/qisqa/QisqaPageLogo';
 
 const btnStyle = 'py-2 px-4 rounded bg-opacity-20 bg-black';
 
 export default async function QisqaPage({ params }) {
   const awaitedParams = await params;
+  const GET_PAGE_API_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/qisqa-pages/${awaitedParams.qisqa}`;
 
-  const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/qisqa-pages/${awaitedParams.qisqa}`
-  );
+  const response = await axios.get(GET_PAGE_API_URL);
 
   const links = response?.data?.data?.links || [];
   const bgImage = response?.data?.data?.bgImageName || 'kalon-buhara.jpg';
-  const imgLogo = response?.data?.data?.image || `${process.env.NEXT_PUBLIC_BASE_URL}/qisqa.png`;
   const pageTitle = response?.data?.data?.title || '';
 
   const renderLinks = () => {
@@ -52,13 +51,7 @@ export default async function QisqaPage({ params }) {
       ></div>
       <div className="absolute top-0 w-full h-full text-white">
         <div className="flex items-center justify-center flex-col mt-16">
-          {imgLogo && (
-            <img
-              className="rounded-full w-32 object-cover block mb-4"
-              src={imgLogo}
-              alt={pageTitle}
-            />
-          )}
+          <QisqaPageLogo pageTitle={pageTitle} baseURL={GET_PAGE_API_URL} />
           <h1 className="text-3xl mb-4">{pageTitle}</h1>
           <ul>{renderLinks()}</ul>
         </div>

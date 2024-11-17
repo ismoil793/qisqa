@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import './style.css';
-import { FiInstagram, FiYoutube } from 'react-icons/fi';
-import { FaTelegram, FaTelegramPlane } from 'react-icons/fa';
 import { IconFromURL } from '@/utils/IconFromURL';
+import './style.css';
 
 const PhoneComponent = ({
   bgImageURL = 'kalta-minor-khiva.jpg',

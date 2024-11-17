@@ -20,6 +20,9 @@ export async function GET(req: NextRequest) {
     let userInfo = await prisma.user.findFirst({
       where: {
         email: session.user.email
+      },
+      include: {
+        page: true
       }
     });
 

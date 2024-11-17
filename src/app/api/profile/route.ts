@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { NEXT_AUTH_OPTIONS } from '@/utils/auth/nextAuthOptions';
 import { validateRequest } from './validateRequest';
+import { optimizeBase64Image } from '@/app/api/profile/imageOptimizer';
 
 export async function GET(req: NextRequest) {
   // @ts-ignore
@@ -84,10 +85,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: `Path ${path} already exists` }, { status: 400 });
     }
 
+    let optimizedImage = undefined;
+    if (image) {
+      optimizedImage = await optimizeBase64Image(image);
+    }
+
     const pageData = {
       path,
       title,
-      image,
+      image: optimizedImage,
       bgImageName
     };
 
