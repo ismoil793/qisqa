@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 import { FiLoader, FiPlus, FiSave, FiTrash } from 'react-icons/fi';
 import Iphone from '@/components/Iphone';
 import axios from 'axios';
+import { isValidForm } from './constants';
+import PreviewImage from '@/components/pages/preview/PreviewImage';
 
 const btnStyle = 'py-2 px-4 rounded-md shadow-sm text-gray-900';
 
@@ -17,7 +20,12 @@ const PreviewForm = ({ pageData, linksData }) => {
   const [pageTitle, setPageTitle] = useState('');
   const [bg, setBg] = useState('kalon-buhara.jpg');
   const [qisqaPath, setQisqaPath] = useState('');
+  const [logoFile, setLogoFile] = useState({
+    url: '',
+    base64: ''
+  });
   const [isFormSaving, setFormSaving] = useState(false);
+  const router = useRouter();
 
   const handleAvatarLinkChange = (e: any) => {
     setAvatarLink(e.target.value);
@@ -26,11 +34,14 @@ const PreviewForm = ({ pageData, linksData }) => {
     setPageTitle(e.target.value);
   };
 
-  const handleAddLink = () => {
-    setLinks((prev: any) => [...prev, { id: prev.length + 1 }]);
+  const handleAddLink = e => {
+    e.preventDefault();
+    const greatestID = links.reduce((acc, link) => (link.id > acc ? link.id : acc), 0);
+    setLinks((prev: any) => [...prev, { id: greatestID + 1 }]);
   };
 
   const handleLinkChange = (e: any, id: number) => {
+    e.preventDefault();
     setLinks((prev: any) =>
       prev.map((link: any) => {
         if (link.id === id) {
@@ -41,7 +52,8 @@ const PreviewForm = ({ pageData, linksData }) => {
     );
   };
 
-  const handleRemoveLink = (id: number) => {
+  const handleRemoveLink = (e, id: number) => {
+    e.preventDefault();
     setLinks((prev: any) => prev.filter((link: any) => link.id !== id));
   };
 
@@ -56,15 +68,19 @@ const PreviewForm = ({ pageData, linksData }) => {
   const handleSave = async e => {
     e.preventDefault();
     try {
-      setFormSaving(true);
-      await axios.post('/api/profile', {
+      const formData = {
         path: qisqaPath,
         title: pageTitle,
-        // image: '',
+        image: logoFile.base64 || undefined,
         bgImageName: bg,
         links
-      });
-      toast.success('Your changes have been saved!');
+      };
+      setFormSaving(true);
+      if (isValidForm(formData)) {
+        await axios.post('/api/profile', formData);
+        toast.success('Your changes have been saved!');
+        router.push(`/${qisqaPath}`);
+      }
     } catch (err) {
       toast.error(err.response?.data?.error || err.message);
     } finally {
@@ -81,6 +97,8 @@ const PreviewForm = ({ pageData, linksData }) => {
           value={link.url}
           placeholder="https://linkedin.com"
           className={`form-input mb-2 w-full`}
+          required
+          disabled={isFormSaving}
         />
 
         <input
@@ -89,10 +107,14 @@ const PreviewForm = ({ pageData, linksData }) => {
           value={link.title}
           placeholder="My linkedin account"
           className={`form-input mb-2 w-full sm:ml-5 ml-2`}
+          required
+          disabled={isFormSaving}
         />
         <button
-          onClick={() => handleRemoveLink(link.id)}
+          type="button"
+          onClick={e => handleRemoveLink(e, link.id)}
           className={`${btnStyle} ml-3 mb-2 text-white`}
+          disabled={isFormSaving}
         >
           <FiTrash />
         </button>
@@ -116,6 +138,9 @@ const PreviewForm = ({ pageData, linksData }) => {
     if (pageData.bgImageName?.length) {
       setBg(pageData.bgImageName);
     }
+    if (pageData.image) {
+      setLogoFile({ url: pageData.image, base64: pageData.image });
+    }
   }, [pageData]);
 
   return (
@@ -132,25 +157,21 @@ const PreviewForm = ({ pageData, linksData }) => {
             className="outline-none block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-gray-500 focus:ring-0 sm:text-sm/6"
             placeholder="example"
             required
+            disabled={isFormSaving}
           />
         </div>
 
         <p>Title</p>
         <input
           onChange={handlePageTitleChange}
-          // className={`${inputStyle} sm:w-3/5 w-96`}
-          className={`form-input sm:w-5/6 w-96 mb-3`}
+          className={'form-input sm:w-5/6 w-96 mb-3'}
           value={pageTitle}
           placeholder="Your name"
           required
+          disabled={isFormSaving}
         />
-        <p>Link to your logo</p>
-        <input
-          onChange={handleAvatarLinkChange}
-          className={`form-input sm:w-5/6 w-96 mb-3`}
-          value={avatarLink}
-          placeholder="link to your avatar"
-        />
+        <p>Upload your logo</p>
+        <PreviewImage logoFile={logoFile} setLogoFile={setLogoFile} isFormSaving={isFormSaving} />
         <p>Social links</p>
         <div className="sm:w-11/12 w-96 mb-3">{renderLinks()}</div>
 
@@ -158,6 +179,8 @@ const PreviewForm = ({ pageData, linksData }) => {
           <button
             className={`btn-sm relative bg-gradient-to-b from-gray-800 to-gray-800/60 bg-[length:100%_100%] bg-[bottom] py-[5px] text-gray-300 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_right,theme(colors.gray.800),theme(colors.gray.700),theme(colors.gray.800))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-[length:100%_150%]`}
             onClick={handleAddLink}
+            type="button"
+            disabled={isFormSaving}
           >
             <FiPlus /> Add new link
           </button>
@@ -169,7 +192,7 @@ const PreviewForm = ({ pageData, linksData }) => {
             type="submit"
             className={`w-full btn-sm bg-gradient-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] py-[5px] text-white shadow-[inset_0px_1px_0px_0px_theme(colors.white/.16)] hover:bg-[length:100%_150%]`}
           >
-            <span className="mr-3">Save changes</span>{' '}
+            <span className="mr-3">{isFormSaving ? 'Uploading' : 'Save changes'}</span>{' '}
             {isFormSaving ? <FiLoader className="animate-spin" /> : <FiSave />}
           </button>
         </div>
@@ -177,7 +200,12 @@ const PreviewForm = ({ pageData, linksData }) => {
 
       <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-center flex-col lg:flex-row">
         <div className="phone-container flex items-start justify-center ml-0 lg:ml-auto mt-16 lg:mt-0">
-          <Iphone bgImageURL={bg} socialLinks={links} pageTitle={pageTitle} />
+          <Iphone
+            bgImageURL={bg}
+            socialLinks={links}
+            pageTitle={pageTitle}
+            logoURL={logoFile.url}
+          />
         </div>
 
         <div className="flex mb-5 flex-wrap mt-10 flex-row lg:flex-col justify-center ml-0 lg:ml-auto">

@@ -59,6 +59,7 @@ export default function Home() {
             pageTitle="Ismoil Shokirov"
             bgImageURL="kalon-buhara.jpg"
             socialLinks={SHOW_CASE_LINKS}
+            logoURL={'/ismoil-linkedin.jpg'}
           />
         </div>
 

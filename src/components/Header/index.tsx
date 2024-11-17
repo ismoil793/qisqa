@@ -17,19 +17,17 @@ export default function Header() {
 
             <ul className="hidden flex-1 items-center justify-start gap-3 ml-10 sm:flex">
               <li>
-                <Link href="/#pricing" className="">
+                <Link href="/#pricing">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/privacy-policy" className="">
+                <Link href="/privacy-policy">
                   Privacy-Policy
                 </Link>
               </li>
               <li>
-                <Link href="/#pricing" className="">
-                  Pricing
-                </Link>
+                <a href="mailto:ismoil.shokirov.dev@gmail.com">Contact</a>
               </li>
             </ul>
           </div>

@@ -4,7 +4,12 @@ import { FiInstagram, FiYoutube } from 'react-icons/fi';
 import { FaTelegram, FaTelegramPlane } from 'react-icons/fa';
 import { IconFromURL } from '@/utils/IconFromURL';
 
-const PhoneComponent = ({ bgImageURL = 'kalta-minor-khiva.jpg', socialLinks, pageTitle }) => {
+const PhoneComponent = ({
+  bgImageURL = 'kalta-minor-khiva.jpg',
+  socialLinks,
+  pageTitle,
+  logoURL
+}) => {
   const [theme, setTheme] = useState('deep-purple');
 
   return (
@@ -104,10 +109,11 @@ const PhoneComponent = ({ bgImageURL = 'kalta-minor-khiva.jpg', socialLinks, pag
               }}
             >
               <img
-                alt="Ismoil Shokirov"
-                src="https://avatars.githubusercontent.com/u/33512473?v=4"
+                alt={pageTitle}
+                src={logoURL || '/qisqa.png'}
+                // src="https://avatars.githubusercontent.com/u/33512473?v=4"
                 // src="https://media.licdn.com/dms/image/v2/D5603AQHJasw-uAgntg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1710613057112?e=1736985600&v=beta&t=GIdC9Rf6zV2RWgqm15Jx7V2Lhh5X-_dhLzygeWh0-wI"
-                className="rounded-full border-2 w-24 object-cover block mb-2 shadow-2xl"
+                className="rounded-full w-24 h-24 object-cover block mb-2 shadow-2xl"
               />
               <h4 className="mb-4 shadow-2xl font-bold text-lg">{pageTitle}</h4>
               <ul>
@@ -116,7 +122,11 @@ const PhoneComponent = ({ bgImageURL = 'kalta-minor-khiva.jpg', socialLinks, pag
                     className="mb-2 rounded bg-opacity-30 bg-black shadow-2xl"
                     key={curLink.id || idx}
                   >
-                    <a href={curLink.url} target="_blank" className="py-1.5 px-2 flex items-center ">
+                    <a
+                      href={curLink.url}
+                      target="_blank"
+                      className="py-1.5 px-2 flex items-center "
+                    >
                       <IconFromURL url={curLink.url} />
                       <span className="ml-1.5">{curLink.title}</span>
                     </a>

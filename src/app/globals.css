@@ -27,7 +27,7 @@ body {
 /*=======================================UTILITY CSS======================================*/
 .btn,
 .btn-sm {
-  @apply inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all;
+  @apply inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all disabled:cursor-not-allowed;
 }
 
 .btn {
@@ -52,7 +52,7 @@ input[type='search']::-webkit-search-results-decoration {
 .form-select,
 .form-checkbox,
 .form-radio {
-  @apply border border-gray-700 bg-gray-900/50 focus:border-gray-600 focus:ring-0 focus:ring-offset-0;
+  @apply border border-gray-700 bg-gray-900/50 focus:border-gray-600 focus:ring-0 focus:ring-offset-0 disabled:cursor-not-allowed;
 }
 
 .form-input,

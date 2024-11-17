@@ -2,6 +2,7 @@ import prisma from '@/utils/db';
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { NEXT_AUTH_OPTIONS } from '@/utils/auth/nextAuthOptions';
+import { validateRequest } from './validateRequest';
 
 export async function GET(req: NextRequest) {
   // @ts-ignore
@@ -53,14 +54,11 @@ export async function POST(req: NextRequest) {
   try {
     const { path, title, image, bgImageName, links } = (await req.json()) || {};
 
-    if (!path) {
-      // @ts-ignore
-      return NextResponse.json({ error: 'Path is required' }, { status: 400 });
-    }
+    const validateError = validateRequest({ path, links });
 
-    if (Array.isArray(links) && links.length > 10) {
+    if (validateError) {
       // @ts-ignore
-      return NextResponse.json({ error: 'Cannot create more than 10 links' }, { status: 400 });
+      return NextResponse.json({ error: validateError }, { status: 400 });
     }
 
     const userEmail = session.user.email;
