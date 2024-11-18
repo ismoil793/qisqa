@@ -16,6 +16,7 @@ export default async function QisqaPage({ params }) {
   const links = response?.data?.data?.links || [];
   const bgImage = response?.data?.data?.bgImageName || 'kalon-buhara.jpg';
   const pageTitle = response?.data?.data?.title || '';
+  const pageLogoURL = response?.data?.data?.image || undefined;
 
   const renderLinks = () => {
     return links.map(link => (
@@ -51,7 +52,7 @@ export default async function QisqaPage({ params }) {
       ></div>
       <div className="absolute top-0 w-full h-full text-white">
         <div className="flex items-center justify-center flex-col mt-16">
-          <QisqaPageLogo pageTitle={pageTitle} baseURL={GET_PAGE_API_URL} />
+          <QisqaPageLogo pageTitle={pageTitle} pageLogoURL={pageLogoURL} />
           <h1 className="text-3xl mb-4">{pageTitle}</h1>
           <ul>{renderLinks()}</ul>
         </div>

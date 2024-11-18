@@ -21,6 +21,7 @@ export const GET = async (req: NextRequest, { params }) => {
         userId: true,
         createdAt: true,
         updatedAt: true,
+        image: true,
         links: true
       }
     });
