@@ -1,3 +1,4 @@
+'use client';
 import { useCallback } from 'react';
 import { getBrowserLocale, UI_TRANSLATIONS } from '@/utils/translations';
 
