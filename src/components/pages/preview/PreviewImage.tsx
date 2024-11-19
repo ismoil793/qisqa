@@ -1,10 +1,35 @@
 import React from 'react';
 import toast from 'react-hot-toast';
+import imageCompression from 'browser-image-compression';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
+const fileToBase64 = file => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+  });
+};
+
+const optimizeImage = async file => {
+  const options = {
+    maxSizeMB: 1,
+    maxWidthOrHeight: 512,
+    useWebWorker: true // Use a web worker for better performance
+  };
+
+  try {
+    const compressedFile = await imageCompression(file, options);
+    return await fileToBase64(compressedFile);
+  } catch (error) {
+    console.error('Image compression error:', error);
+  }
+};
+
 const PreviewImage = ({ logoFile, setLogoFile, isFormSaving }) => {
-  const handleFileChange = e => {
+  const handleFileChange = async e => {
     const file = e.target.files[0];
 
     if (file.size > MAX_FILE_SIZE) {
@@ -12,16 +37,11 @@ const PreviewImage = ({ logoFile, setLogoFile, isFormSaving }) => {
       return;
     }
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      // @ts-ignore
-      // const base64 = reader.result?.split(',')[1];
-      setLogoFile({
-        url: reader.result,
-        base64: reader.result
-      });
-    };
-    reader.readAsDataURL(file);
+    const base64 = await optimizeImage(file);
+    setLogoFile({
+      url: base64,
+      base64
+    });
   };
 
   return (
