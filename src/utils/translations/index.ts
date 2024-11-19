@@ -130,8 +130,8 @@ export const UI_TRANSLATIONS = {
     'homepage.title': 'Ваши ссылки, одно простое решение',
     'homepage.callout': 'Делитесь всем, что вы делаете, единой ссылкой.',
     'homepage.main-cta': 'Начать бесплатно',
-    'homepage.pricing': 'Цены',
-    'homepage.pricing.title': '/qisqa.uz — бесплатно',
+    'homepage.pricing': 'Цена',
+    'homepage.pricing.title': 'Пользуйтесь /qisqa.uz — бесплатно',
     'homepage.pricing.desc':
       'Делитесь всем, что вы делаете, с помощью одной ссылки, наслаждаясь красотой узбекской архитектуры, где традиции сочетаются с простотой и связью.',
     'homepage.benefit1.title': 'Все ссылки в одном месте',
