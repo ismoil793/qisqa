@@ -1,13 +1,15 @@
 'use client';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getBrowserLocale, UI_TRANSLATIONS } from '@/utils/translations';
 
 const useTranslation = () => {
-  let locale = localStorage.getItem('language-locale');
+  const [locale, setLocale] = useState('en');
 
-  if (!locale) {
-    locale = getBrowserLocale();
-  }
+  useEffect(() => {
+    const defaultLocale = localStorage.getItem('language-locale') || getBrowserLocale();
+
+    setLocale(defaultLocale);
+  }, []);
 
   const translate = useCallback(
     (translationText, param = '') => {

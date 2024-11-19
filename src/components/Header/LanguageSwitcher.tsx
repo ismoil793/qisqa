@@ -3,8 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getBrowserLocale } from '@/utils/translations';
 
 const LanguageSwitcher = () => {
-  const defaultLocale = localStorage.getItem('language-locale') || getBrowserLocale();
-  const [language, setLanguage] = useState(defaultLocale);
+  const [language, setLanguage] = useState('en');
   const [isSelectorOpen, setSelectorOpen] = useState(false);
 
   const handleLanguagePreferenceChange = lang => {
@@ -13,6 +12,11 @@ const LanguageSwitcher = () => {
     setLanguage(lang.toLowerCase());
     window.location.reload();
   };
+
+  useEffect(() => {
+    const defaultLocale = localStorage.getItem('language-locale') || getBrowserLocale();
+    setLanguage(defaultLocale);
+  }, []);
 
   return (
     <div className="relative">
@@ -27,7 +31,7 @@ const LanguageSwitcher = () => {
       </div>
       <div
         className={`absolute z-10 p-2 bg-gray-800 rounded mt-1 flex flex-col ${isSelectorOpen ? 'block' : 'hidden'}`}
-        style={{top: '100%', left: -4}}
+        style={{ top: '100%', left: -4 }}
       >
         <button
           type="button"
