@@ -11,7 +11,7 @@ const LinkButton: FC<LinkButtonProps> = ({ href, className, children }) => {
   return (
     <Link
       href={href}
-      className={`py-2 px-4 rounded bg-opacity-20 bg-black flex items-center justify-center ${className}`}
+      className={`py-2 px-4 rounded bg-opacity-65 bg-black flex items-center justify-center ${className}`}
     >
       {children}
     </Link>

@@ -6,10 +6,12 @@ import Iphone from '@/components/Iphone';
 import axios from 'axios';
 import { isValidForm } from './constants';
 import PreviewImage from '@/components/pages/preview/PreviewImage';
+import useTranslation from '@/hooks/useTranslation';
 
 const btnStyle = 'py-2 px-4 rounded-md shadow-sm text-gray-900';
 
 const PreviewForm = ({ pageData, linksData }) => {
+  const { translate } = useTranslation();
   const [links, setLinks] = useState<any>(() => {
     if (linksData?.length) return linksData;
     return [{ title: '', url: '' }];
@@ -78,7 +80,7 @@ const PreviewForm = ({ pageData, linksData }) => {
       setFormSaving(true);
       if (isValidForm(formData)) {
         await axios.post('/api/profile', formData);
-        toast.success('Your changes have been saved!');
+        toast.success(translate('profilepage.form.saved'));
         router.push(`/${qisqaPath}`);
       }
     } catch (err) {
@@ -105,7 +107,7 @@ const PreviewForm = ({ pageData, linksData }) => {
           name="title"
           onChange={e => handleLinkChange(e, link.id)}
           value={link.title}
-          placeholder="My linkedin account"
+          placeholder={translate('profilepage.form.links.placeholder')}
           className={`form-input mb-2 w-full sm:ml-5 ml-2`}
           required
           disabled={isFormSaving}
@@ -146,7 +148,7 @@ const PreviewForm = ({ pageData, linksData }) => {
   return (
     <div className="flex w-full h-full lg:flex-row flex-col">
       <form onSubmit={handleSave} className="flex flex-col relative z-20 lg:w-1/2 w-full">
-        <p>Page</p>
+        <p>{translate('profilepage.form.page')}</p>
         <div className="flex py-1 px-4 rounded-md shadow-sm border border-gray-700 bg-gray-900/50 focus-within:ring-2 focus-within:ring-inset sm:w-5/6 w-96 mb-2">
           <span className="flex select-none items-center text-gray-500 sm:text-sm">qisqa.uz/</span>
           <input
@@ -155,24 +157,24 @@ const PreviewForm = ({ pageData, linksData }) => {
             value={qisqaPath}
             onChange={handleQisqaPathChange}
             className="outline-none block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-gray-500 focus:ring-0 sm:text-sm/6"
-            placeholder="example"
+            placeholder={translate('profilepage.form.page.placeholder')}
             required
             disabled={isFormSaving}
           />
         </div>
 
-        <p>Title</p>
+        <p>{translate('profilepage.form.title')}</p>
         <input
           onChange={handlePageTitleChange}
           className={'form-input sm:w-5/6 w-96 mb-3'}
           value={pageTitle}
-          placeholder="Your name"
+          placeholder={translate('profilepage.form.title.placeholder')}
           required
           disabled={isFormSaving}
         />
-        <p>Upload your logo</p>
+        <p>{translate('profilepage.form.upload')}</p>
         <PreviewImage logoFile={logoFile} setLogoFile={setLogoFile} isFormSaving={isFormSaving} />
-        <p>Social links</p>
+        <p>{translate('profilepage.form.links')}</p>
         <div className="sm:w-11/12 w-96 mb-3">{renderLinks()}</div>
 
         <div className="flex justify-center sm:w-5/6 w-96">
@@ -182,7 +184,7 @@ const PreviewForm = ({ pageData, linksData }) => {
             type="button"
             disabled={isFormSaving}
           >
-            <FiPlus /> Add new link
+            <FiPlus /> {translate('profilepage.form.links.add')}
           </button>
         </div>
 
@@ -192,7 +194,11 @@ const PreviewForm = ({ pageData, linksData }) => {
             type="submit"
             className={`w-full btn-sm bg-gradient-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] py-[5px] text-white shadow-[inset_0px_1px_0px_0px_theme(colors.white/.16)] hover:bg-[length:100%_150%]`}
           >
-            <span className="mr-3">{isFormSaving ? 'Uploading' : 'Save changes'}</span>{' '}
+            <span className="mr-3">
+              {isFormSaving
+                ? translate('profilepage.form.uploading')
+                : translate('profilepage.form.save')}
+            </span>{' '}
             {isFormSaving ? <FiLoader className="animate-spin" /> : <FiSave />}
           </button>
         </div>
