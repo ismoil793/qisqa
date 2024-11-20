@@ -1,10 +1,12 @@
-import VideoThumb from '@/public/images/hero-image-01.jpg';
+// import VideoThumb from '@/public/images/hero-image-01.jpg';
 import Link from 'next/link';
 import useTranslation from '@/hooks/useTranslation';
+import { useSession } from 'next-auth/react';
 // import ModalVideo from "@/components/modal-video";
 
 export default function HeroHomePage() {
   const { translate } = useTranslation();
+  const { data: session } = useSession();
 
   return (
     <section>
@@ -31,7 +33,7 @@ export default function HeroHomePage() {
                 <div data-aos="fade-up" data-aos-delay={400}>
                   <Link
                     className="btn group mb-4 w-full bg-gradient-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_theme(colors.white/.16)] hover:bg-[length:100%_150%] sm:mb-0 sm:w-auto"
-                    href="/profile"
+                    href={session ? '/profile' : '/signin'}
                   >
                     <span className="relative inline-flex items-center">
                       {translate('homepage.main-cta')}

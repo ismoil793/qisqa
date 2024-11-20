@@ -15,7 +15,7 @@ const ProfilePage = () => {
   const { data: session } = useSession({
     required: true,
     onUnauthenticated: () => {
-      redirect('/signin?callbackUrl=/profile');
+      redirect('/signin');
     }
   });
 

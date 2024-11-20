@@ -6,7 +6,7 @@ import QisqaPageEdit from '@/components/pages/qisqa/QisqaPageEdit';
 import Head from 'next/head';
 import QisqaPageLogo from '@/components/pages/qisqa/QisqaPageLogo';
 
-const btnStyle = 'py-2 px-4 rounded bg-opacity-20 bg-black';
+const btnStyle = 'py-2 px-4 rounded bg-opacity-40 bg-black';
 
 export default async function QisqaPage({ params }) {
   try {
@@ -55,7 +55,7 @@ export default async function QisqaPage({ params }) {
         <div className="absolute top-0 w-full h-full text-white">
           <div className="flex items-center justify-center flex-col mt-16">
             <QisqaPageLogo pageTitle={pageTitle} pageLogoURL={pageLogoURL} />
-            <h1 className="text-3xl mb-4">{pageTitle}</h1>
+            <h1 className="text-3xl mb-4 font-bold sm:max-w-xl max-w-xs">{pageTitle}</h1>
             <ul>{renderLinks()}</ul>
           </div>
 

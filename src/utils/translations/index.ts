@@ -73,7 +73,7 @@ export const UI_TRANSLATIONS = {
     'navigation.support-project': 'Loyihani qo‘llab-quvvatlash',
     'navigation.edit': "O'zgartirish",
 
-    'homepage.title': 'Barcha havolalaringizni boshqarish uchun "qisqa" echim',
+    'homepage.title': 'Barcha havolalaringizni boshqarish uchun "qisqa" yechim',
     'homepage.callout':
       'O‘zbek arxitekturasining nafis fonida, barcha ishlaringizni bitta havola orqali ulashing',
     'homepage.main-cta': 'Bepul boshlash',

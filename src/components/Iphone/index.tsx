@@ -113,11 +113,11 @@ const PhoneComponent = ({
                 // src="https://media.licdn.com/dms/image/v2/D5603AQHJasw-uAgntg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1710613057112?e=1736985600&v=beta&t=GIdC9Rf6zV2RWgqm15Jx7V2Lhh5X-_dhLzygeWh0-wI"
                 className="rounded-full w-24 h-24 object-cover block mb-2 shadow-2xl"
               />
-              <h4 className="mb-4 shadow-2xl font-bold text-lg">{pageTitle}</h4>
+              <h4 className="mb-4 font-bold text-lg">{pageTitle}</h4>
               <ul>
                 {socialLinks?.map((curLink, idx) => (
                   <li
-                    className="mb-2 rounded bg-opacity-30 bg-black shadow-2xl"
+                    className="mb-2 rounded bg-opacity-40 bg-black shadow-2xl"
                     key={curLink.id || idx}
                   >
                     <a
