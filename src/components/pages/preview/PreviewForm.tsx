@@ -20,7 +20,7 @@ const PreviewForm = ({ pageData, linksData }) => {
     'https://avatars.githubusercontent.com/u/33512473?v=4'
   );
   const [pageTitle, setPageTitle] = useState('');
-  const [bg, setBg] = useState('kalon-buhara.jpg');
+  const [bg, setBg] = useState('kalta-minor-khiva.jpg');
   const [qisqaPath, setQisqaPath] = useState('');
   const [logoFile, setLogoFile] = useState({
     url: '',
