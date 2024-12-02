@@ -1,8 +1,8 @@
-// import VideoThumb from '@/public/images/hero-image-01.jpg';
+import VideoThumb from '/public/thumbnail-qisqa-demo.jpg';
 import Link from 'next/link';
 import useTranslation from '@/hooks/useTranslation';
 import { useSession } from 'next-auth/react';
-// import ModalVideo from "@/components/modal-video";
+import ModalVideo from '@/components/ModealVideo';
 
 export default function HeroHomePage() {
   const { translate } = useTranslation();
@@ -12,9 +12,9 @@ export default function HeroHomePage() {
     <section>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Hero content */}
-        <div className="py-12 md:py-20">
+        <div className="py-12 md:pt-20 md:pb-16">
           {/* Section header */}
-          <div className="text-center">
+          <div className="text-center mb-16">
             <h1
               className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text pb-5 font-nacelle text-4xl font-semibold text-transparent md:text-5xl"
               data-aos="fade-up"
@@ -55,15 +55,15 @@ export default function HeroHomePage() {
             </div>
           </div>
 
-          {/*<ModalVideo*/}
-          {/*    thumb={VideoThumb}*/}
-          {/*    thumbWidth={1104}*/}
-          {/*    thumbHeight={576}*/}
-          {/*    thumbAlt="Modal video thumbnail"*/}
-          {/*    video="videos//video.mp4"*/}
-          {/*    videoWidth={1920}*/}
-          {/*    videoHeight={1080}*/}
-          {/*/>*/}
+          <ModalVideo
+            thumb={VideoThumb}
+            thumbWidth={800}
+            thumbHeight={400}
+            thumbAlt="Modal video thumbnail"
+            video="https://www.youtube.com/embed/iBDu78JniEU?autoplay=1"
+            videoWidth={1920}
+            videoHeight={1080}
+          />
         </div>
       </div>
     </section>

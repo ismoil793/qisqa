@@ -12,19 +12,19 @@ import Footer from '@/components/Footer';
 const SHOW_CASE_LINKS = [
   {
     id: 1,
-    title: '@ismoil-shokirov',
+    title: 'My linkedin',
     url: 'https://www.linkedin.com/in/ismoil-shokirov/'
   },
   {
     id: 2,
-    title: '@qisqalog',
+    title: 'My telegram',
     url: 'https://t.me/qisqalog'
   },
-  {
-    id: 3,
-    title: '@ismoil793',
-    url: 'https://github.com/ismoil793'
-  },
+  // {
+  //   id: 3,
+  //   title: 'My github',
+  //   url: 'https://github.com/ismoil793'
+  // },
   // {
   //   id: 4,
   //   title: 'Stackoverflow',
@@ -56,10 +56,9 @@ export default function Home() {
 
         <div className="mx-auto max-w-6xl px-4 sm:px-6 pb-12 md:pb-20">
           <PhoneComponent
-            pageTitle="Ismoil Shokirov"
+            pageTitle="qisqa.uz demo"
             bgImageURL="kalon-buhara.jpg"
             socialLinks={SHOW_CASE_LINKS}
-            logoURL={'/ismoil-linkedin.jpg'}
           />
         </div>
 
