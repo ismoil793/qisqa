@@ -21,7 +21,7 @@ export const UI_TRANSLATIONS = {
 
     'homepage.title': 'All Your Links, One "qisqa" Shortcut',
     'homepage.callout':
-      'Share everything you do with a single link, while embracing the beauty of Uzbek architecture — where tradition meets simplicity and connection.',
+      'Share everything you do with a single link, while embracing the beauty of Central Asian architecture — where tradition meets simplicity and connection.',
     'homepage.main-cta': 'Start for free',
     'homepage.pricing': 'Pricing',
     'homepage.pricing.title': '/qisqa.uz is free to use',
@@ -33,9 +33,9 @@ export const UI_TRANSLATIONS = {
     'homepage.benefit2.title': 'Free and Easy to Use',
     'homepage.benefit2.desc':
       'Qisqa.uz is completely free to use and has a clean, intuitive interface. Set up your profile in minutes without any hassle.',
-    'homepage.benefit3.title': 'Central Asian-Inspired Design',
+    'homepage.benefit3.title': 'Elegant Design',
     'homepage.benefit3.desc':
-      'Inspired by the simplicity and connection of Central Asian culture, Qisqa.uz offers a sleek, elegant design that brings both beauty and functionality to your link-sharing experience.',
+      'Inspired by the simplicity of Central Asian architecture, Qisqa.uz offers a sleek, elegant design that brings both beauty and functionality to your link-sharing experience.',
 
     'authpage.welcome': 'Welcome back',
     'authpage.signin.google': 'Sign in with Google',
@@ -80,16 +80,16 @@ export const UI_TRANSLATIONS = {
     'homepage.pricing': 'Narxlar',
     'homepage.pricing.title': '/qisqa.uz - foydalanish uchun bepul',
     'homepage.pricing.desc':
-      'Qisqa.uz barcha havolalaringizni bitta joyda jamlaydi. Barcha qilayotgan ishingizni bitta bepul havola orqali ulashing — Markaziy Osiyo an’anasining soddaligi va bog‘liqligini aks ettiradi.',
+      'Qisqa.uz havolalaringizni bitta joyda jamlaydi. Barcha qilayotgan ishingizni bepul havola orqali ulashing.',
     'homepage.benefit1.title': 'Barcha havolalar bir joyda',
     'homepage.benefit1.desc':
-      'Qisqa.uz barcha muhim havolalaringizni — ijtimoiy tarmoqlar, loyihalar va boshqalarni bitta oddiy havolada jamlashga imkon beradi, izdoshlaringiz uchun hammasini oson qiladi.',
+      'Qisqa.uz barcha muhim havolalaringizni — ijtimoiy tarmoqlar, loyihalar va boshqalarni bitta oddiy havolada jamlashga imkon beradi, obunachilaringiz uchun hammasini oson qiladi.',
     'homepage.benefit2.title': 'Bepul va oson foydalanish',
     'homepage.benefit2.desc':
       'Qisqa.uz butunlay bepul va sodda, tushunarli interfeysga ega. Profilingizni bir necha daqiqada muammosiz sozlang.',
-    'homepage.benefit3.title': 'Markaziy Osiyodan ilhomlangan dizayn',
+    'homepage.benefit3.title': 'Elegant dizayn',
     'homepage.benefit3.desc':
-      'Markaziy Osiyo madaniyatining soddaligi va bog‘liqligidan ilhomlangan Qisqa.uz go‘zal va funksional havolalar almashish tajribasini taqdim etadi.',
+      'Qisqa.uz havola almashish uchun nafis va funksional dizaynni taklif etadi.',
 
     'authpage.welcome': 'Xush kelibsiz',
     'authpage.signin.google': 'Google orqali kirish',
@@ -140,9 +140,9 @@ export const UI_TRANSLATIONS = {
     'homepage.benefit2.title': 'Бесплатно и просто в использовании',
     'homepage.benefit2.desc':
       'Qisqa.uz полностью бесплатен и имеет интуитивно понятный интерфейс. Настройте свой профиль за считанные минуты без каких-либо проблем.',
-    'homepage.benefit3.title': 'Дизайн Узбекской Архитектуры',
+    'homepage.benefit3.title': 'Элегантный Дизайн',
     'homepage.benefit3.desc':
-      'Вдохновленный простотой и связью центрально-азиатской культуры, Qisqa.uz предлагает элегантный и функциональный дизайн для вашей страницы обмена ссылками.',
+      'Вдохновленный простотой центрально-азиатской архитектуры, Qisqa.uz предлагает элегантный и функциональный дизайн для вашей страницы обмена ссылками.',
 
     'authpage.welcome': 'С возвращением',
     'authpage.signin.google': 'Войти через Google',
