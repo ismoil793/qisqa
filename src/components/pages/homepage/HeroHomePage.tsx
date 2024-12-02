@@ -57,7 +57,7 @@ export default function HeroHomePage() {
 
           <ModalVideo
             thumb={VideoThumb}
-            thumbWidth={1184}
+            thumbWidth={900}
             thumbHeight={400}
             thumbAlt="Modal video thumbnail"
             video="https://www.youtube.com/embed/iBDu78JniEU?autoplay=1"
