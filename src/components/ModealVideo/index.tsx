@@ -104,15 +104,16 @@ export default function ModalVideo({
           className="fixed inset-0 z-[99999] bg-black/70 transition-opacity duration-300 ease-out data-[closed]:opacity-0"
         />
         <div className="fixed inset-0 z-[99999] flex px-4 py-6 sm:px-6">
-          <div className="mx-auto flex h-full max-w-6xl items-center">
+          <div className="mx-auto flex h-full w-full items-center justify-center">
             <DialogPanel
               transition
-              className="aspect-video max-h-full w-full overflow-hidden rounded-2xl bg-black shadow-2xl duration-300 ease-out data-[closed]:scale-95 data-[closed]:opacity-0"
+              className="w-full max-w-sm h-1/3 md:max-w-5xl md:h-2/3 rounded-2xl bg-black shadow-2xl duration-300 ease-out data-[closed]:scale-95 data-[closed]:opacity-0"
             >
               <iframe
-                width={1244}
-                height={600}
-                src="https://www.youtube.com/embed/iBDu78JniEU?autoplay=1&rel=0"
+                className="w-full h-full m-auto"
+                // width={1044}
+                // height={590}
+                src="https://www.youtube.com/embed/Mb0el211FUc?autoplay=1&rel=0"
                 title="Demo video of qisqa.uz"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

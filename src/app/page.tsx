@@ -73,6 +73,7 @@ export default function Home() {
             pageTitle="qisqa.uz demo"
             bgImageURL="kalon-buhara.jpg"
             socialLinks={SHOW_CASE_LINKS}
+            footerURL="https://qisqa.uz/demo"
           />
         </div>
 

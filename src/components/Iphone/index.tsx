@@ -6,7 +6,8 @@ const PhoneComponent = ({
   bgImageURL = 'kalta-minor-khiva.jpg',
   socialLinks,
   pageTitle,
-  logoURL
+  logoURL,
+  footerURL = undefined
 }) => {
   const [theme, setTheme] = useState('deep-purple');
 
@@ -111,7 +112,7 @@ const PhoneComponent = ({
                 src={logoURL || '/qisqa.png'}
                 // src="https://avatars.githubusercontent.com/u/33512473?v=4"
                 // src="https://media.licdn.com/dms/image/v2/D5603AQHJasw-uAgntg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1710613057112?e=1736985600&v=beta&t=GIdC9Rf6zV2RWgqm15Jx7V2Lhh5X-_dhLzygeWh0-wI"
-                className="rounded-full w-24 h-24 object-cover block mb-2 shadow-2xl"
+                className="rounded-full w-24 h-24 object-cover block mb-2"
               />
               <h4 className="mb-4 font-bold text-lg">{pageTitle}</h4>
               <ul>
@@ -133,9 +134,15 @@ const PhoneComponent = ({
               </ul>
             </div>
             <div style={{ marginBottom: '30px' }}>
-              <a href="https://qisqa.uz" style={{ color: 'white' }}>
-                qisqa.uz
-              </a>
+              {footerURL ? (
+                <a href={footerURL} style={{ color: 'white' }}>
+                  {footerURL.includes('/demo') ? 'qisqa.uz/demo' : footerURL}
+                </a>
+              ) : (
+                <a href="https://qisqa.uz" style={{ color: 'white' }}>
+                  qisqa.uz
+                </a>
+              )}
             </div>
           </div>
         </div>

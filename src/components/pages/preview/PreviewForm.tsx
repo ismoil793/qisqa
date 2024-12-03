@@ -20,7 +20,7 @@ const PreviewForm = ({ pageData, linksData }) => {
     'https://avatars.githubusercontent.com/u/33512473?v=4'
   );
   const [pageTitle, setPageTitle] = useState('');
-  const [bg, setBg] = useState('kalta-minor-khiva.jpg');
+  const [bg, setBg] = useState('kalon-buhara.jpg');
   const [qisqaPath, setQisqaPath] = useState('');
   const [logoFile, setLogoFile] = useState({
     url: '',
@@ -274,6 +274,22 @@ const PreviewForm = ({ pageData, linksData }) => {
               src="/metro.jpg"
               alt="Tashkent metro"
               className="w-16 h-16 object-cover rounded-full"
+            />
+          </button>
+
+          <button className="mb-3 ml-3 lg:ml-0" onClick={() => handleBgChange('macOS.jpg')}>
+            <img
+              src="/macOS.jpg"
+              alt="macOS background"
+              className="w-16 h-16 object-cover rounded-full"
+            />
+          </button>
+
+          <button className="mb-3 ml-3 lg:ml-0" onClick={() => handleBgChange('macOS2.jpg')}>
+            <img
+                src="/macOS2.jpg"
+                alt="macOS background"
+                className="w-16 h-16 object-cover rounded-full"
             />
           </button>
         </div>
