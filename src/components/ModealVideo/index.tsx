@@ -5,6 +5,7 @@ import type { StaticImageData } from 'next/image';
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import Image from 'next/image';
 import SecondaryIllustration from '/public/secondary-illustration.svg';
+import useTranslation from "@/hooks/useTranslation";
 
 interface ModalVideoProps {
   thumb: StaticImageData;
@@ -27,6 +28,7 @@ export default function ModalVideo({
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const { translate } = useTranslation();
 
   return (
     <div className="relative flex justify-center">
@@ -89,7 +91,7 @@ export default function ModalVideo({
               </defs>
             </svg>
             <span className="text-sm font-medium leading-tight text-gray-300">
-              Watch a demo
+              {translate('homepage.watch-demo')}
               <span className="text-gray-600"> - </span>
               0:57
             </span>

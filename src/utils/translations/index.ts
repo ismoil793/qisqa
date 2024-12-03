@@ -36,6 +36,7 @@ export const UI_TRANSLATIONS = {
     'homepage.benefit3.title': 'Elegant Design',
     'homepage.benefit3.desc':
       'Inspired by the simplicity of Central Asian architecture, Qisqa.uz offers a sleek, elegant design that brings both beauty and functionality to your link-sharing experience.',
+    'homepage.watch-demo': 'Watch demo',
 
     'authpage.welcome': 'Welcome back',
     'authpage.signin.google': 'Sign in with Google',
@@ -90,6 +91,7 @@ export const UI_TRANSLATIONS = {
     'homepage.benefit3.title': 'Elegant dizayn',
     'homepage.benefit3.desc':
       'Qisqa.uz havola almashish uchun nafis va funksional dizaynni taklif etadi.',
+    'homepage.watch-demo': "Demoni ko'rish",
 
     'authpage.welcome': 'Xush kelibsiz',
     'authpage.signin.google': 'Google orqali kirish',
@@ -143,6 +145,7 @@ export const UI_TRANSLATIONS = {
     'homepage.benefit3.title': 'Элегантный Дизайн',
     'homepage.benefit3.desc':
       'Вдохновленный простотой центрально-азиатской архитектуры, Qisqa.uz предлагает элегантный и функциональный дизайн для вашей страницы обмена ссылками.',
+    'homepage.watch-demo': 'Посмотреть демо',
 
     'authpage.welcome': 'С возвращением',
     'authpage.signin.google': 'Войти через Google',
