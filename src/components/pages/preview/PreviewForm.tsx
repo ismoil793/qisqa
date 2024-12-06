@@ -97,7 +97,7 @@ const PreviewForm = ({ pageData, linksData }) => {
           name="url"
           onChange={e => handleLinkChange(e, link.id)}
           value={link.url}
-          placeholder="https://linkedin.com"
+          placeholder="https://example.com"
           className={`form-input mb-2 w-full`}
           required
           disabled={isFormSaving}

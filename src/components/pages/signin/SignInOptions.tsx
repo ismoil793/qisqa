@@ -66,7 +66,11 @@ const SignInOptions = () => {
   const getOrCreateUser = async () => {
     try {
       const response = await axios.get('/api/users');
+      const page = response.data.data?.page;
       setProfileData(response.data.data);
+      if (!page) {
+        router.push('/profile');
+      }
     } catch (err) {
       console.log(err.message);
     }

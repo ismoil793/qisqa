@@ -57,7 +57,9 @@ export const UI_TRANSLATIONS = {
     'profilepage.form.links.add': 'Add new link',
     'profilepage.form.save': 'Save changes',
     'profilepage.form.uploading': 'Uploading',
-    'profilepage.form.saved': 'Your changes have been saved'
+    'profilepage.form.saved': 'Your changes have been saved',
+
+    'footer.share-link': 'Share this link'
   },
   uz: {
     'navigation.about': 'Ilova haqida',
@@ -112,7 +114,9 @@ export const UI_TRANSLATIONS = {
     'profilepage.form.links.add': 'Yangi havola qo‘shish',
     'profilepage.form.save': 'Saqlash',
     'profilepage.form.uploading': 'Yuklanmoqda',
-    'profilepage.form.saved': 'Oʻzgartirishlar saqlandi'
+    'profilepage.form.saved': 'Oʻzgartirishlar saqlandi',
+
+    'footer.share-link': 'Havolani ulashish'
   },
   ru: {
     'navigation.about': 'О нас',
@@ -166,7 +170,9 @@ export const UI_TRANSLATIONS = {
     'profilepage.form.links.add': 'Добавить новую ссылку',
     'profilepage.form.save': 'Сохранить изменения',
     'profilepage.form.uploading': 'Загрузка',
-    'profilepage.form.saved': 'Ваши изменения сохранены'
+    'profilepage.form.saved': 'Ваши изменения сохранены',
+
+    'footer.share-link': 'Поделиться ссылкой'
   }
 };
 

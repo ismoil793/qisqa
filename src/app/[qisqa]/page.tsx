@@ -5,6 +5,7 @@ import React from 'react';
 import QisqaPageEdit from '@/components/pages/qisqa/QisqaPageEdit';
 import Head from 'next/head';
 import QisqaPageLogo from '@/components/pages/qisqa/QisqaPageLogo';
+import ShareContentBtn from '@/components/Button/ShareContentBtn';
 
 const btnStyle = 'py-2 px-4 rounded bg-opacity-40 bg-black';
 
@@ -24,7 +25,7 @@ export default async function QisqaPage({ params }) {
       return links.map(link => (
         <li key={link.id}>
           <a href={link.url} className={`${btnStyle} mb-2 flex items-center mb-2"`} target="_blank">
-            <IconFromURL url={link.url} /> <span className="ml-3">{link.title}</span>
+            <IconFromURL url={link.url} /> <span className="ml-2">{link.title}</span>
           </a>
         </li>
       ));
@@ -59,8 +60,23 @@ export default async function QisqaPage({ params }) {
             <ul>{renderLinks()}</ul>
           </div>
 
-          <footer className="absolute bottom-4 left-1/2 text-2xl -translate-x-1/2">
-            <a href="https://qisqa.uz" target="_blank" className="rounded underline py-1 px-4">
+          {/*<div className="flex items-center justify-center mt-10">*/}
+          {/*  <ShareContentBtn*/}
+          {/*    title={`${pageTitle} | qisqa.uz`}*/}
+          {/*    url={`https://qisqa.uz/${awaitedParams.qisqa}`}*/}
+          {/*  />*/}
+          {/*</div>*/}
+
+          <footer className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col justify-center items-center w-full">
+            <ShareContentBtn
+              title={`${pageTitle} | qisqa.uz`}
+              url={`https://qisqa.uz/${awaitedParams.qisqa}`}
+            />
+            <a
+              href="https://qisqa.uz"
+              target="_blank"
+              className="rounded underline py-1 px-4 text-xl mt-2"
+            >
               qisqa.uz
             </a>
           </footer>
