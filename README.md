@@ -1,3 +1,23 @@
+Have you ever used “link in bio” tools like Linktree or TapBio?
+I decided to create one of my own, and that’s how qisqa.uz was born.
+
+Here’s what makes it special:
+✔️ A free, simple-to-use tool
+✔️ Hosted on a .UZ domain 🌍
+✔️ Available in 🇺🇿 Uzbek, English, Russian languages
+✔️ Features beautiful background images for customization 🖼
+
+With qisqa.uz, you can manage all your links effortlessly while enjoying a sleek and intuitive interface tailored to your needs.
+
+👉 Check out the website here: https://qisqa.uz
+👉 Explore the demo page: https://qisqa.uz/demo
+
+Discover qisqa.uz – your all-in-one solution for managing links, with simplicity at its core.
+
+Fun fact: “qisqa” means short in Uzbek!
+
+https://qisqa.uz 🔗🚀
+
 Run prisma studion dashboard
 
 ```bash
