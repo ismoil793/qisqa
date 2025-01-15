@@ -2,9 +2,13 @@ Have you ever used “link in bio” tools like Linktree or TapBio?
 I decided to create one of my own, and that’s how qisqa.uz was born.
 
 Here’s what makes it special:
+
 ✔️ A free, simple-to-use tool
+
 ✔️ Hosted on a .UZ domain 🌍
+
 ✔️ Available in 🇺🇿 Uzbek, English, Russian languages
+
 ✔️ Features beautiful background images for customization 🖼
 
 With qisqa.uz, you can manage all your links effortlessly while enjoying a sleek and intuitive interface tailored to your needs.
