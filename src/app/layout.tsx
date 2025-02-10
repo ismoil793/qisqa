@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import { Toaster } from 'react-hot-toast';
 import { Inter } from 'next/font/google';
 import NextAuthSessionProvider from '@/components/Providers/NextAuthSessionProvider';
@@ -39,6 +40,7 @@ export default function RootLayout({
             />
             {children}
           </QueryClientProvider>
+          <Analytics mode="production" />
         </body>
       </html>
     </NextAuthSessionProvider>
