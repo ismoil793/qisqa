@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CommonButton = ({ text, onClick, className }) => {
+const CommonButton = ({ text, onClick, className, test1, test2, basdasd }) => {
   return (
     <button
       onClick={onClick}
