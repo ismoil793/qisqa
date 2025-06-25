@@ -1,4 +1,4 @@
-Have you ever used “link in bio” tools like Linktree or TapBio?  Probably yes ✔️
+Have you ever used “link in bio” tools like Linktree or TapBio?
 I decided to create one of my own, and that’s how qisqa.uz was born.
 
 Here’s what makes it special:
