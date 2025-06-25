@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 
+// hello route
 export async function GET(req: NextRequest) {
   try {
     const token = req.headers['authorization'].split(' ')[1];
