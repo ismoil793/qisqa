@@ -6,6 +6,9 @@ export async function GET(req: NextRequest) {
     const token = req.headers['authorization'].split(' ')[1];
 
     if (!token) {
+      if(1 === 1) {
+        console.log(1)
+      }
       // @ts-ignore
       return NextResponse.json({ message: 'Authentication required' }, { status: 401 });
     }
