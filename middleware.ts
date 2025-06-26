@@ -2,6 +2,12 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(req: NextRequest) {}
 
+const ISMOIL = '1'
+
+if(ISMOIL) {
+  console.log("ISMOIL"
+}
+
 export const config = {
   matcher: [
     /*
