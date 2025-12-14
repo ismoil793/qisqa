@@ -56,7 +56,11 @@ const BLOCKED_KEYWORDS = [
   'jihod',
   'muslim',
   'christian',
-  'jewish'
+  'jewish',
+  'situs slot',
+  'slot online',
+  'sabaslots',
+  'saba slots',
 ];
 
 export const validateRequest = ({ path, links, title }) => {
