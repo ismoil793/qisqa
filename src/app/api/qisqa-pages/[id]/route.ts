@@ -28,7 +28,7 @@ export const GET = async (req: NextRequest, { params }) => {
 
     if (!pageInfo) {
       // @ts-ignore
-      return NextResponse.json({ error: 'Page not found' }, { status: 404 });
+      return NextResponse.json({ error: 'Page not found' }, { status: 404, path: id });
     }
 
     return NextResponse.json({ data: pageInfo });

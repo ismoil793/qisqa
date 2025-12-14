@@ -53,9 +53,10 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { path, title, image, bgImageName, links } = (await req.json()) || {};
+    const { path: rawPath, title, image, bgImageName, links } = (await req.json()) || {};
+    const path = rawPath?.trim()?.toLowerCase();
 
-    const validateError = validateRequest({ path, links });
+    const validateError = validateRequest({ path, links, title });
 
     if (validateError) {
       // @ts-ignore

@@ -12,7 +12,8 @@ const btnStyle = 'py-2 px-4 rounded bg-opacity-40 bg-black';
 export default async function QisqaPage({ params }) {
   try {
     const awaitedParams = await params;
-    const GET_PAGE_API_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/qisqa-pages/${awaitedParams.qisqa}`;
+    const qisqaPath = awaitedParams.qisqa?.toLowerCase();
+    const GET_PAGE_API_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/qisqa-pages/${qisqaPath}`;
 
     const response = await axios.get(GET_PAGE_API_URL);
 
@@ -63,14 +64,14 @@ export default async function QisqaPage({ params }) {
           {/*<div className="flex items-center justify-center mt-10">*/}
           {/*  <ShareContentBtn*/}
           {/*    title={`${pageTitle} | qisqa.uz`}*/}
-          {/*    url={`https://qisqa.uz/${awaitedParams.qisqa}`}*/}
+          {/*    url={`https://qisqa.uz/${qisqaPath}`}*/}
           {/*  />*/}
           {/*</div>*/}
 
           <footer className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col justify-center items-center w-full">
             <ShareContentBtn
               title={`${pageTitle} | qisqa.uz`}
-              url={`https://qisqa.uz/${awaitedParams.qisqa}`}
+              url={`https://qisqa.uz/${qisqaPath}`}
             />
             <a
               href="https://qisqa.uz"
@@ -81,7 +82,7 @@ export default async function QisqaPage({ params }) {
             </a>
           </footer>
 
-          <QisqaPageEdit />
+          <QisqaPageEdit currentPage={qisqaPath} />
         </div>
       </div>
     );

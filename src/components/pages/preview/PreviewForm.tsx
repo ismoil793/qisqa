@@ -71,7 +71,7 @@ const PreviewForm = ({ pageData, linksData }) => {
     e.preventDefault();
     try {
       const formData = {
-        path: qisqaPath,
+        path: qisqaPath?.toLowerCase(),
         title: pageTitle,
         image: logoFile.base64 || undefined,
         bgImageName: bg,
@@ -79,9 +79,10 @@ const PreviewForm = ({ pageData, linksData }) => {
       };
       setFormSaving(true);
       if (isValidForm(formData)) {
-        await axios.post('/api/profile', formData);
+        const data = await axios.post('/api/profile', formData);
+        const path = data?.data?.path?.path || qisqaPath?.toLowerCase();
         toast.success(translate('profilepage.form.saved'));
-        router.push(`/${qisqaPath}`);
+        router.push(`/${path}`);
       }
     } catch (err) {
       toast.error(err.response?.data?.error || err.message);
@@ -287,9 +288,9 @@ const PreviewForm = ({ pageData, linksData }) => {
 
           <button className="mb-3 ml-3 lg:ml-0" onClick={() => handleBgChange('macOS2.jpg')}>
             <img
-                src="/macOS2.jpg"
-                alt="macOS background"
-                className="w-16 h-16 object-cover rounded-full"
+              src="/macOS2.jpg"
+              alt="macOS background"
+              className="w-16 h-16 object-cover rounded-full"
             />
           </button>
         </div>
