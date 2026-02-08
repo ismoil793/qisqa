@@ -41,7 +41,8 @@ export default function Footer() {
               <li>
                 <a
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="https://buymeacoffee.com/ismoil"
+                  // href="https://buymeacoffee.com/ismoil"
+                  href="mailto:ismoil.shokirov.dev@gmail.com"
                 >
                   {translate('navigation.support-project')}
                 </a>
@@ -64,7 +65,9 @@ export default function Footer() {
           </div>
           {/* 3rd block */}
           <div className="space-y-2">
-            <h3 className="text-sm font-medium text-gray-200">{translate('navigation.resources')}</h3>
+            <h3 className="text-sm font-medium text-gray-200">
+              {translate('navigation.resources')}
+            </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
