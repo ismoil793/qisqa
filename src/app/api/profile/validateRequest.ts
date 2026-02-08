@@ -102,8 +102,10 @@ export const validateRequest = ({ path, links, title }) => {
         const hasCredentials = Boolean(url.username || url.password);
         const isPunycode = host.startsWith('xn--');
         const isIpHost = /^\d{1,3}(\.\d{1,3}){3}$/.test(host);
+        const labels = host.split('.').filter(Boolean);
+        const hasNumericLabel = labels.some(label => /^\d+$/.test(label));
 
-        if (!isHttp || hasCredentials || isPunycode || isIpHost) return true;
+        if (!isHttp || hasCredentials || isPunycode || isIpHost || hasNumericLabel) return true;
 
         return BLOCKED_DOMAINS.some(blockedDomain => host.includes(blockedDomain));
       } catch {
