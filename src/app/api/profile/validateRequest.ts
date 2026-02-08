@@ -60,38 +60,56 @@ const BLOCKED_KEYWORDS = [
   'situs slot',
   'slot online',
   'sabaslots',
-  'saba slots',
+  'saba slots'
 ];
 
 export const validateRequest = ({ path, links, title }) => {
   const regex = /^[a-zA-Z0-9-]+$/;
 
-  if (!path?.trim().length) {
+  const normalizedPath = (path ?? '').trim().toLowerCase();
+
+  if (!normalizedPath.length) {
     return `Path ${path} is required`;
   }
 
-  if (RESERVED_PATHS.includes(path)) {
+  if (RESERVED_PATHS.includes(normalizedPath)) {
     return `Path ${path} is already reserved`;
   }
 
-  if (!regex.test(path)) {
+  if (!regex.test(normalizedPath)) {
     return 'Path can only contain letters, numbers, and hyphens';
   }
 
+  if (normalizedPath.length > 64) {
+    return 'Path is too long';
+  }
+
   const isBlockedPath = BLOCKED_KEYWORDS.some(blockedKey =>
-    path.toLowerCase()?.includes(blockedKey)
+    normalizedPath.toLowerCase()?.includes(blockedKey)
   );
   const isBlockedTitle = BLOCKED_KEYWORDS.some(blockedKey =>
     title?.toLowerCase()?.includes(blockedKey)
   );
-  let isBlockedDomain = false;
 
-  BLOCKED_DOMAINS.forEach(blockedDomain => {
-    const isBlocked = links.some(link => link?.url?.toLowerCase()?.includes(blockedDomain));
-    if (isBlocked) {
-      isBlockedDomain = true;
-    }
-  });
+  const isBlockedDomain =
+    Array.isArray(links) &&
+    links.some(link => {
+      try {
+        const url = new URL(String(link?.url ?? ''));
+        const host = url.hostname.toLowerCase();
+
+        const isHttp = url.protocol === 'http:' || url.protocol === 'https:';
+        const hasCredentials = Boolean(url.username || url.password);
+        const isPunycode = host.startsWith('xn--');
+        const isIpHost = /^\d{1,3}(\.\d{1,3}){3}$/.test(host);
+
+        if (!isHttp || hasCredentials || isPunycode || isIpHost) return true;
+
+        return BLOCKED_DOMAINS.some(blockedDomain => host.includes(blockedDomain));
+      } catch {
+        return true; // invalid URL
+      }
+    });
 
   if (isBlockedPath || isBlockedDomain || isBlockedTitle) {
     return 'This path name or link is not allowed to use';
