@@ -33,7 +33,12 @@ const BLOCKED_DOMAINS = [
   'casino',
   'ramenbet',
   'tedbet',
-  'bons.com'
+  'bons.com',
+  'nip.io',
+  'sslip.io',
+  'xip.io',
+  'ngrok.io',
+  'ngrok.com'
 ];
 
 const BLOCKED_KEYWORDS = [
@@ -52,6 +57,7 @@ const BLOCKED_KEYWORDS = [
   'casino',
   'religion',
   'islamic',
+  'islam',
   'jihad',
   'jihod',
   'muslim',
