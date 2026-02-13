@@ -1,4 +1,5 @@
 {
+  some bullshit goes here
   "compilerOptions": {
     "lib": [
       "dom",
